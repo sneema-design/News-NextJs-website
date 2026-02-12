@@ -3,9 +3,11 @@
 import Link from "next/link";
 import TrendingNewsCard from "./TrendingNewsCard";
 import { useGetAllNews } from "@/app/services/headline/useHeadlineService";
-
-export default function NewsPannel() {
-  const { data: allNews, isPending, isError } = useGetAllNews();
+type props={
+  category:string|null
+}
+export default function NewsPannel({category}:props) {
+  const { data: allNews, isPending, isError } = useGetAllNews(category??undefined);
 
   if (isPending) {
     return (

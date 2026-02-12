@@ -1,8 +1,11 @@
+"use client"
 import Category from "@/components/Category";
 import Latest from "@/components/Latest";
-import BlogPannel from "@/components/NewsPannel";
+import NewsPannel from "@/components/NewsPannel";
+import { useState } from "react";
 
 export default function Home() {
+   const [category, setCategory] = useState<string | null>(null);
   return (
     <div className="min-h-screen bg-muted/30">
      
@@ -15,8 +18,8 @@ export default function Home() {
 
           {/* RIGHT SIDE */}
           <div className="lg:col-span-2  lg:top-19  mx:1 border-d-2">
-            <Category />
-            <BlogPannel />
+            <Category selected={category} onSelect={setCategory}/>
+            <NewsPannel category={category}/>
           </div>
         </div>
       </main>

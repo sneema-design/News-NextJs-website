@@ -2,6 +2,6 @@ import axios from "axios";
 const api = axios.create({
   baseURL: "https://newsapi.org/v2",
   headers: { "Content-Type": "application/json" },
-  params: { apiKey: "1234c266d6c64f0a99c177e880e5c64b" },
+  params: { apiKey: "599773e8704d42a48200f5ea1636d3e9" },
 });
  export default api;

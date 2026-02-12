@@ -2,6 +2,7 @@
 import { NewsApiResponse } from "@/app/type/news";
 import { useQuery } from "@tanstack/react-query";
 import { getTopHeadlines ,getNewsByTitle, getAllNews} from "./headlineService";
+import Category from "@/components/Category";
 
 export const useGetAllHeadline=()=>{
     return useQuery<NewsApiResponse,Error>({
@@ -17,10 +18,10 @@ export const useGetNewsByTitle=(title:string)=>{
     })
 }
 
-export const useGetAllNews=()=>{
+export const useGetAllNews=(category?:string)=>{
     return useQuery<NewsApiResponse,Error>({
-        queryKey:["every-news"],
-        queryFn:()=>getAllNews()
+        queryKey:["every-news",category],
+        queryFn:()=>getAllNews(category||"latest")
     })
     
 }
