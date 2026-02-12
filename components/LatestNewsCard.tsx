@@ -4,7 +4,6 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 interface LatestNewsCardProps {
-  id:number,
   title: string
   description: string
   category: string
