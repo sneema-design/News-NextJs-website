@@ -2,9 +2,6 @@ import api from "@/app/api/axiosInstance";
 import type { NewsApiResponse } from "@/app/type/news";
 import axios, { AxiosRequestConfig } from "axios";
 
-/**
- * Generic request handler
- */
 const fetchNews = async (
   url: string,
   config?: AxiosRequestConfig
@@ -24,9 +21,7 @@ const fetchNews = async (
   }
 };
 
-/**
- * Get Top Headlines
- */
+
 export const getTopHeadlines = (
   country: string = "us"
 ): Promise<NewsApiResponse> => {
@@ -35,9 +30,7 @@ export const getTopHeadlines = (
   });
 };
 
-/**
- * Search News by Title
- */
+
 export const getNewsByTitle = (
   title: string
 ): Promise<NewsApiResponse> => {
@@ -48,9 +41,7 @@ export const getNewsByTitle = (
   });
 };
 
-/**
- * Get All News (General Search)
- */
+
 export const getAllNews = (
   query: string = "latest"
 ): Promise<NewsApiResponse> => {

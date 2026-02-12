@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { Card, CardContent } from "./ui/card"
+import Image from "next/image";
+import { Card, CardContent } from "./ui/card";
 
 interface TrendingBlogCardProps {
-  title: string
-  description: string
-  image: string
-  category: string
-  date: string
+  title: string;
+  description: string;
+  image?: string | null;
+  category: string;
+  date: string;
 }
 
 export default function TrendingNewsCard({
@@ -18,17 +18,22 @@ export default function TrendingNewsCard({
   category,
   date,
 }: TrendingBlogCardProps) {
+  console.log("image", image);
   return (
     <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
-      
       {/* Image */}
       <div className="relative w-full h-48">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+        {image && (
+          <Image
+            src={image}
+            alt={title}
+            loading="eager"
+            fill
+            // height={100}
+            // width={100}
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        )}
       </div>
 
       <CardContent className="p-4 space-y-2">
@@ -44,11 +49,8 @@ export default function TrendingNewsCard({
           {description}
         </p>
 
-        <p className="text-xs text-muted-foreground pt-2">
-          {date}
-        </p>
+        <p className="text-xs text-muted-foreground pt-2">{date}</p>
       </CardContent>
     </Card>
-  )
+  );
 }
-

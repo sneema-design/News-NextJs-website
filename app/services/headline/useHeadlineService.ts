@@ -1,7 +1,7 @@
 "use client"
 import { NewsApiResponse } from "@/app/type/news";
 import { useQuery } from "@tanstack/react-query";
-import { getTopHeadlines ,getNewsByTitle} from "./headlineService";
+import { getTopHeadlines ,getNewsByTitle, getAllNews} from "./headlineService";
 
 export const useGetAllHeadline=()=>{
     return useQuery<NewsApiResponse,Error>({
@@ -15,4 +15,12 @@ export const useGetNewsByTitle=(title:string)=>{
         queryKey:["Single-news",title],
         queryFn:()=>getNewsByTitle(title)
     })
+}
+
+export const useGetAllNews=()=>{
+    return useQuery<NewsApiResponse,Error>({
+        queryKey:["every-news"],
+        queryFn:()=>getAllNews()
+    })
+    
 }

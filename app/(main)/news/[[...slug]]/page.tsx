@@ -10,7 +10,7 @@ export default function Page() {
 
   const decodedTitle = title ? decodeURIComponent(title) : "";
 
-  const { data: newss, isPending, isError } =
+  const { data, isPending, isError } =
     useGetNewsByTitle(decodedTitle);
 
   if (!decodedTitle)
@@ -19,54 +19,67 @@ export default function Page() {
   if (isPending)
     return <p className="text-center mt-10 text-lg">Loading article...</p>;
 
-  if (isError || !newss)
-    return <p className="text-center mt-10 text-red-500">Failed to load article</p>;
+  if (isError || !data || !data.articles?.length)
+    return (
+      <p className="text-center mt-10 text-red-500">
+        Failed to load article
+      </p>
+    );
 
-  const news = newss.articles[0];
+  const news = data.articles[0];
 
   return (
-    <div className="bg-gray-50 min-h-screen py-16 px-4">
-      <div className="max-w-3xl mx-auto bg-white p-10 shadow-lg">
+    <div className="bg-white min-h-screen">
 
-        {/* Newspaper Header */}
-        <div className="text-center mb-10 border-b pb-6">
-          <p className="text-sm uppercase tracking-widest text-gray-500">
-            {news.source?.name}
-          </p>
+      {/* Article Container */}
+      <div className="max-w-5xl mx-auto px-6 py-12">
 
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mt-4 leading-tight">
-            {news.title}
-          </h1>
+        {/* Category */}
+        <p className="text-sm uppercase tracking-widest text-gray-500 mb-4">
+          {news.source?.name}
+        </p>
 
-          <p className="text-gray-500 mt-4 text-sm">
-            {new Date(news.publishedAt).toLocaleDateString()} ·{" "}
-            {news.author || "Staff Reporter"}
-          </p>
+        {/* Headline */}
+        <h2 className="text-5xl font-serif font-bold leading-tight mb-6">
+          {news.title}
+        </h2>
+
+      
+        <div className="flex items-center gap-4 text-gray-600 text-sm mb-8 border-b pb-6">
+          <span>{news.author || "Staff Reporter"}</span>
+          <span>•</span>
+          <span>
+            {new Date(news.publishedAt).toLocaleDateString()}
+          </span>
         </div>
 
-        {/* Featured Image */}
+      
         {news.urlToImage && (
-          <div className="mb-10">
+          <div className="relative w-full h-[500px] mb-10">
             <Image
               src={news.urlToImage}
               alt={news.title}
-              className="w-full h-[400px] object-cover"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
             />
           </div>
         )}
 
-        {/* Article Body */}
-        <div className="prose prose-lg max-w-none text-gray-800 leading-relaxed font-serif">
+  
+        <div className="text-xl leading-relaxed font-serif text-gray-900
+                        md:columns-2 md:gap-12">
 
-          {/* Drop Cap Effect */}
-          <p className="first-letter:text-6xl first-letter:font-bold first-letter:mr-3 first-letter:float-left">
-            {news.description}
-          </p>
+          {news.description && (
+            <p className="first-letter:text-7xl first-letter:font-bold first-letter:mr-3 first-letter:float-left">
+              {news.description}
+            </p>
+          )}
 
-          <p>{news.content}</p>
+          {news.content && <p className="mt-6">{news.content}</p>}
 
         </div>
-
       </div>
     </div>
   );
