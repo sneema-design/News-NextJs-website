@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///home/gs/nextjs/blogg/app/news/%5Bid%5D/page.tsx"],"sourcesContent":["export default function page() {\n    return(\n        <div>\n            <p>news page</p>\n        </div>\n    )\n};\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACpB,qBACI,8OAAC;kBACG,cAAA,8OAAC;sBAAE;;;;;;;;;;;AAGf"}}]
+}

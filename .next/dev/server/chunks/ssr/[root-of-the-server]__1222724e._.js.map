@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///home/gs/nextjs/blogg/app/page.tsx"],"sourcesContent":["import Home from \"../Page/Home\"\n\nexport default function Home() {\n  return (\n    <div>\n        NavBar\n    </div>\n   );\n}\n"],"names":[],"mappings":";;;;;;AAEe,SAAS;IACtB,qBACE,8OAAC;kBAAI;;;;;;AAIT"}}]
+}

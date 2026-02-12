@@ -1,0 +1,16 @@
+[00:00:00.960] Server  LOG     ✓ Ready in 720ms
+[00:00:07.791] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.972] Browser WARN    Image with src "https://picsum.photos/id/1015/600/400" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+[00:00:07.972] Browser WARN    Image with src "https://picsum.photos/id/1015/600/400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:07.972] Browser WARN    Image with src "https://picsum.photos/id/1016/600/400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:07.972] Browser WARN    Image with src "https://picsum.photos/id/1025/600/400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:07.973] Browser WARN    Image with src "https://picsum.photos/id/1035/600/400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:07.973] Browser WARN    Image with src "https://picsum.photos/id/1043/600/400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:07.973] Browser WARN    Image with src "https://picsum.photos/id/1050/600/400" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:04:13.117] Server  LOG       Reload env: .env
+[00:04:13.224] Server  LOG     ✓ Compiled in 32ms
+[00:04:23.259] Server  LOG       Reload env: .env
+[00:04:30.904] Server  LOG       Reload env: .env
+[00:04:31.961] Server  LOG       Reload env: .env
+[00:42:04.704] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
