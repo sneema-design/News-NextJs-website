@@ -5,11 +5,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "picsum.photos",
+        hostname: "**", // allow all https domains
       },
     ],
   },
 };
 
 export default nextConfig;
-

@@ -1,12 +1,11 @@
 import Category from "@/components/Category";
 import Latest from "@/components/Latest";
-import NavBar from "@/components/ui/NavBar";
 import BlogPannel from "@/components/NewsPannel";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-muted/30">
-      <NavBar />
+     
 
       <main className="max-w-7xl mx-auto py-1 ">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-1">
