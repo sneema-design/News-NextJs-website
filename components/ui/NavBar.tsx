@@ -1,5 +1,11 @@
 import Link from "next/link"
 import { Button } from "./button"
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs"
 
 export default function NavBar() {
   const navItemLeft = [
@@ -30,9 +36,25 @@ export default function NavBar() {
         </div>
 
         <div className="flex items-center gap-4">
-          <Button className="rounded-full px-5 py-2 bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300 shadow-md hover:shadow-lg">
-            Profile
-          </Button>
+          {/* Show Sign In when signed out */}
+          <SignedOut>
+            <SignInButton mode="modal">
+              <Button className="rounded-full px-5 py-2 bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300 shadow-md hover:shadow-lg">
+                Sign In
+              </Button>
+            </SignInButton>
+          </SignedOut>
+
+          {/* Show User profile when signed in */}
+          <SignedIn>
+            <UserButton
+              appearance={{
+                elements: {
+                  avatarBox: "w-10 h-10",
+                },
+              }}
+            />
+          </SignedIn>
         </div>
       </div>
     </nav>
