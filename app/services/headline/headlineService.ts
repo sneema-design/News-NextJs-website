@@ -4,7 +4,7 @@ import axios, { AxiosRequestConfig } from "axios";
 
 const fetchNews = async (
   url: string,
-  config?: AxiosRequestConfig
+  config?: AxiosRequestConfig,
 ): Promise<NewsApiResponse> => {
   try {
     const { data } = await api.get<NewsApiResponse>(url, config);
@@ -12,28 +12,22 @@ const fetchNews = async (
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error("API Error:", error.response?.data);
-      throw new Error(
-        error.response?.data?.message || "Failed to fetch news"
-      );
+      throw new Error(error.response?.data?.message || "Failed to fetch news");
     }
 
     throw new Error("Unexpected error occurred");
   }
 };
 
-
 export const getTopHeadlines = (
-  country: string = "us"
+  country: string = "us",
 ): Promise<NewsApiResponse> => {
   return fetchNews("/top-headlines", {
     params: { country },
   });
 };
 
-
-export const getNewsByTitle = (
-  title: string
-): Promise<NewsApiResponse> => {
+export const getNewsByTitle = (title: string): Promise<NewsApiResponse> => {
   return fetchNews("/everything", {
     params: {
       q: title,
@@ -41,9 +35,8 @@ export const getNewsByTitle = (
   });
 };
 
-
 export const getAllNews = (
-  query: string = "latest"
+  query: string = "latest",
 ): Promise<NewsApiResponse> => {
   return fetchNews("/everything", {
     params: {

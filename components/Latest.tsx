@@ -26,6 +26,7 @@ export default function Latest() {
               description={item.description ?? "No description available"}
               category={item.source.name}  
               date={new Date(item.publishedAt).toLocaleDateString()}
+              item={item}
             />
           </Link>
         ))}

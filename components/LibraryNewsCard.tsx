@@ -14,7 +14,7 @@ interface TrendingBlogCardProps {
   item: Article;
 }
 
-export default function TrendingNewsCard({
+export default function LibaryNewsCard({
   title,
   description,
   image,
@@ -22,8 +22,7 @@ export default function TrendingNewsCard({
   date,
   item,
 }: TrendingBlogCardProps) {
-  const { addToLibrary, removeFromLibrary, isSaved } = useLibrary();
-  const saved=isSaved(item.url)
+  const {removeFromLibrary} = useLibrary();
   return (
     <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
       {/* Image */}
@@ -58,21 +57,13 @@ export default function TrendingNewsCard({
           <p className="text-xs text-muted-foreground pt-2">{date}</p>
           <Button
             size="sm"
-            variant={saved ? "default" : "secondary"}
             className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95"
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();     
-     
-
-              if (saved) {
-                removeFromLibrary(item.url);
-              } else {
-                addToLibrary(item);
-              }
-            }}
+            onClick={(e)=>{
+                e.preventDefault()
+                e.stopPropagation()
+                removeFromLibrary(item.url)}}
           >
-            {saved ? "Saved ✓" : "Read Later"}
+            Remove
           </Button>
         </div>
       </CardContent>

@@ -42,6 +42,7 @@ export default function NewsPannel({category}:props) {
                 category={item.source.name}
                 date={new Date(item.publishedAt).toLocaleDateString()}
                 image={item.urlToImage ?? undefined}
+                item={item}
               />
             </Link>
           ))}

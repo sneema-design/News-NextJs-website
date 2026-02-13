@@ -1,18 +1,25 @@
+"use client"
+import { Article } from "@/app/type/news"
 import {
   Card,
   CardDescription,
   CardTitle,
 } from "@/components/ui/card"
+import { Button } from "./ui/button"
+import { useLibrary } from "@/app/context/LibaryContext"
 interface LatestNewsCardProps {
   title: string
   description: string
   category: string
   date: string
+  item:Article
 }
 export function LatestNewsCard({  title,
   description,
   category,
-  date,}:LatestNewsCardProps) {
+  date,item}:LatestNewsCardProps) {
+    const {addToLibrary,removeFromLibrary,isSaved}=useLibrary()
+    const saved=isSaved(item.url)
   return (
     <Card className="p-4 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
       <div className="flex items-center justify-between gap-6">
@@ -30,9 +37,29 @@ export function LatestNewsCard({  title,
             {description}
           </CardDescription>
 
-          <p className="text-xs text-gray-500 mt-2">
+        <div className="flex justify-between">
+            <p className="text-xs text-gray-500 mt-2">
             {date}• 5 min read
           </p>
+         <Button
+            size="sm"
+            variant={saved ? "default" : "secondary"}
+            className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95"
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();     
+     
+
+              if (saved) {
+                removeFromLibrary(item.url);
+              } else {
+                addToLibrary(item);
+              }
+            }}
+          >
+            {saved ? "Saved ✓" : "Read Later"}
+          </Button>
+        </div>
         </div>
       </div>
     </Card>

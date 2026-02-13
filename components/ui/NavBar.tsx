@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import { Button } from "./button"
 import {
@@ -6,14 +7,15 @@ import {
   SignInButton,
   UserButton,
 } from "@clerk/nextjs"
-
+import { usePathname } from "next/navigation";
+import { Divide } from "lucide-react";
 export default function NavBar() {
   const navItemLeft = [
     { label: "Home", href: "/" },
     { label: "Library", href: "/library" },
     { label: "About", href: "/about" },
   ]
-
+   const pathname = usePathname();
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-white/70 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -35,7 +37,8 @@ export default function NavBar() {
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
+      {
+        pathname!=="/sign-in"?  <div className="flex items-center gap-4">
           {/* Show Sign In when signed out */}
           <SignedOut>
             <SignInButton mode="modal">
@@ -55,7 +58,8 @@ export default function NavBar() {
               }}
             />
           </SignedIn>
-        </div>
+        </div>:<div></div>
+      }
       </div>
     </nav>
   )
