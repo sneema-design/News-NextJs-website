@@ -1,4 +1,4 @@
-# 🚀 Project Name
+# 🚀 News Website
 
 A modern full-stack web application built with Next.js, featuring authentication with Clerk, API communication using Axios, and server state management powered by TanStack Query.
 
