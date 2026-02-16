@@ -63,7 +63,7 @@ cp .env.example .env.local
 ```env
 # Application
 NEXT_PUBLIC_BASE_URL=https://yourdomain.com
-NEXT_PUBLIC_API_URL=https://api.yourdomain.com
+NEXT_PUBLIC_API_KEY=https://api.yourdomain.com
 
 # Clerk Authentication
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
