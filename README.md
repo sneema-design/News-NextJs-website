@@ -1,38 +1,199 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Project Name
 
-## Getting Started
+A modern full-stack web application built with Next.js, featuring authentication with Clerk, API communication using Axios, and server state management powered by TanStack Query.
 
-First, run the development server:
+---
+
+## 🌐 Live Demo
+
+https://yourdomain.com
+
+---
+
+## 🛠 Tech Stack
+
+- Next.js
+- React
+- Clerk (Authentication & User Management)
+- Axios (HTTP Client)
+- TanStack Query (Server State Management)
+- JavaScript / TypeScript
+
+---
+
+## ✨ Features
+
+- 🔐 Secure Authentication (Sign Up / Sign In / Sign Out)
+- 👤 Protected Routes
+- ⚡ Optimized Data Fetching & Caching
+- 🌍 Environment-based Configuration
+- 📦 Clean Folder Structure
+
+---
+
+## 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/your-repo.git
+cd your-repo
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file in the root directory.
+
+You can copy from:
+
+```bash
+cp .env.example .env.local
+```
+
+### Example `.env.local`
+
+```env
+# Application
+NEXT_PUBLIC_APP_URL=https://yourdomain.com
+NEXT_PUBLIC_API_URL=https://api.yourdomain.com
+
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_publishable_key
+CLERK_SECRET_KEY=your_secret_key
+```
+
+⚠️ Important:
+- Never commit your `.env.local`
+- Never expose secret keys in public repositories
+
+---
+
+## 🔑 Authentication (Clerk)
+
+This project uses Clerk for:
+
+- User Registration
+- Login & Logout
+- Session Management
+- Route Protection
+
+To set up Clerk:
+
+1. Create an account at https://clerk.com/
+2. Create a new application
+3. Copy your Publishable Key and Secret Key
+4. Add them to your `.env.local`
+
+---
+
+## 🌐 API & Data Handling
+
+### Axios
+Axios is configured inside the `lib/` folder to handle API requests.
+
+### TanStack Query
+TanStack Query is used for:
+- Data caching
+- Background refetching
+- Server state synchronization
+
+Example structure:
+
+```
+lib/
+  axiosInstance.ts
+
+hooks/
+  useUsersQuery.ts
+```
+
+---
+
+## ▶️ Running the Project
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App runs on:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+### Production Build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 Project Structure
 
-## Deploy on Vercel
+```
+app/ or pages/     → Application routes
+components/        → Reusable UI components
+lib/               → Axios configuration
+hooks/             → TanStack Query hooks
+middleware.ts      → Clerk authentication middleware
+public/            → Static assets
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Deployment
 
-# News-NextJs-website
+You can deploy easily on:
+
+- Vercel
+- Netlify
+- Any Node.js hosting provider
+
+Make sure to configure environment variables in your hosting dashboard.
+
+---
+
+## 🧪 Scripts
+
+```bash
+npm run dev      # Start development server
+npm run build    # Build for production
+npm start        # Start production server
+npm run lint     # Run ESLint
+```
+
+---
+
+## 📌 Best Practices
+
+- Use `.env.example` for environment reference
+- Keep secret keys secure
+- Use server-side rendering carefully with authenticated routes
+- Follow clean architecture principles
+
+---
+
+## 👨‍💻 Author
+
+Sanidhya Neema
+GitHub: https://github.com/sneema-design  
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
