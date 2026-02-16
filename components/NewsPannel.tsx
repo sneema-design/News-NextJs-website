@@ -64,7 +64,7 @@ export default function NewsPannel({ category }: props) {
         </div>
 
         {/* Pagination */}
-        <div className="mt-10 flex justify-center">
+        <div className="mt-3 flex justify-center">
           <NewsPagnination
             currentPage={currentPage}
             totalPages={totalPages}

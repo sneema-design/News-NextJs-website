@@ -20,10 +20,10 @@ const fetchNews = async (
 };
 
 export const getTopHeadlines = (
-  country: string = "us",
+  country: string = "us",pageSize: number=10
 ): Promise<NewsApiResponse> => {
   return fetchNews("/top-headlines", {
-    params: { country },
+    params: { country ,pageSize},
   });
 };
 
