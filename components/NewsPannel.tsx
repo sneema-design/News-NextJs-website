@@ -1,13 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import TrendingNewsCard from "./TrendingNewsCard";
 import { useGetAllNews } from "@/app/services/headline/useHeadlineService";
-type props={
-  category:string|null
-}
-export default function NewsPannel({category}:props) {
-  const { data: allNews, isPending, isError } = useGetAllNews(category??undefined);
+import { NewsPagnination } from "./NewsPagination";
+
+type props = {
+  category: string | null;
+};
+
+export default function NewsPannel({ category }: props) {
+  const { data: allNews, isPending, isError } =
+    useGetAllNews(category ?? undefined);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 12;
 
   if (isPending) {
     return (
@@ -25,20 +33,27 @@ export default function NewsPannel({category}:props) {
     );
   }
 
+  const totalArticles = allNews.articles.length;
+  const totalPages = Math.ceil(totalArticles / articlesPerPage);
+
+  const startIndex = (currentPage - 1) * articlesPerPage;
+  const currentArticles = allNews.articles.slice(
+    startIndex,
+    startIndex + articlesPerPage
+  );
+
   return (
-    <section className="py-3">
+    <section className="py-6">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {allNews.articles.map((item) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {currentArticles.map((item) => (
             <Link
               key={item.url}
               href={`/news?title=${encodeURIComponent(item.title)}`}
             >
               <TrendingNewsCard
                 title={item.title}
-                description={
-                  item.description ?? "No description available"
-                }
+                description={item.description ?? "No description available"}
                 category={item.source.name}
                 date={new Date(item.publishedAt).toLocaleDateString()}
                 image={item.urlToImage ?? undefined}
@@ -47,8 +62,16 @@ export default function NewsPannel({category}:props) {
             </Link>
           ))}
         </div>
+
+        {/* Pagination */}
+        <div className="mt-10 flex justify-center">
+          <NewsPagnination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </div>
       </div>
     </section>
   );
 }
-
