@@ -23,8 +23,13 @@ export default function TrendingNewsCard({
   item,
 }: TrendingBlogCardProps) {
   const { addToLibrary, removeFromLibrary, isSaved } = useLibrary();
-  const saved=isSaved(item.url)
-  const {isSignedIn}=useUser()
+  const saved = isSaved(item.url);
+  const { isSignedIn } = useUser();
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    saved ? removeFromLibrary(item.url) : addToLibrary(item);
+  };
   return (
     <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
       {/* Image */}
@@ -35,8 +40,6 @@ export default function TrendingNewsCard({
             alt={title}
             loading="eager"
             fill
-            // height={100}
-            // width={100}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
@@ -58,26 +61,16 @@ export default function TrendingNewsCard({
         <div className="flex justify-between">
           <p className="text-xs text-muted-foreground pt-2">{date}</p>
           <div>
-            {
-              isSignedIn?<Button
-            size="sm"
-            variant={saved ? "default" : "secondary"}
-            className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95"
-            onClick={(e) => {
-              e.stopPropagation();
-              e.preventDefault();     
-     
-
-              if (saved) {
-                removeFromLibrary(item.url);
-              } else {
-                addToLibrary(item);
-              }
-            }}
-          >
-            {saved ? "Saved ✓" : "Read Later"}
-          </Button>:null
-            }
+            {isSignedIn ? (
+              <Button
+                size="sm"
+                variant={saved ? "default" : "secondary"}
+                className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95"
+                onClick={(e) => handleClick(e)}
+              >
+                {saved ? "Saved ✓" : "Read Later"}
+              </Button>
+            ) : null}
           </div>
         </div>
       </CardContent>
