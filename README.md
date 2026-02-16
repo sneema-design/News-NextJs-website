@@ -6,7 +6,7 @@ A modern full-stack web application built with Next.js, featuring authentication
 
 ## 🌐 Live Demo
 
-https://yourdomain.com
+https://news-next-js-website.vercel.app/
 
 ---
 
@@ -97,7 +97,7 @@ To set up Clerk:
 ## 🌐 API & Data Handling
 
 ### Axios
-Axios is configured inside the `lib/` folder to handle API requests.
+Axios is configured inside the `api/` folder to handle API requests.
 
 ### TanStack Query
 TanStack Query is used for:
@@ -108,10 +108,10 @@ TanStack Query is used for:
 Example structure:
 
 ```
-lib/
+api/
   axiosInstance.ts
 
-hooks/
+services/
   useUsersQuery.ts
 ```
 
@@ -147,8 +147,8 @@ npm start
 ```
 app/ or pages/     → Application routes
 components/        → Reusable UI components
-lib/               → Axios configuration
-hooks/             → TanStack Query hooks
+api/               → Axios configuration
+service/             → TanStack Query hooks
 middleware.ts      → Clerk authentication middleware
 public/            → Static assets
 ```
