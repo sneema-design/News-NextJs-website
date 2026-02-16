@@ -1,18 +1,21 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
-import TrendingNewsCard from "./TrendingNewsCard";
-import { useGetAllNews } from "@/app/services/headline/useHeadlineService";
-import { NewsPagnination } from "./NewsPagination";
+import { useState } from 'react';
+import Link from 'next/link';
+import TrendingNewsCard from './TrendingNewsCard';
+import { useGetAllNews } from '@/app/services/headline/useHeadlineService';
+import { NewsPagnination } from './NewsPagination';
 
 type props = {
   category: string | null;
 };
 
 export default function NewsPannel({ category }: props) {
-  const { data: allNews, isPending, isError } =
-    useGetAllNews(category ?? undefined);
+  const {
+    data: allNews,
+    isPending,
+    isError,
+  } = useGetAllNews(category ?? undefined);
 
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 12;
@@ -39,7 +42,7 @@ export default function NewsPannel({ category }: props) {
   const startIndex = (currentPage - 1) * articlesPerPage;
   const currentArticles = allNews.articles.slice(
     startIndex,
-    startIndex + articlesPerPage
+    startIndex + articlesPerPage,
   );
 
   return (
@@ -53,7 +56,7 @@ export default function NewsPannel({ category }: props) {
             >
               <TrendingNewsCard
                 title={item.title}
-                description={item.description ?? "No description available"}
+                description={item.description ?? 'No description available'}
                 category={item.source.name}
                 date={new Date(item.publishedAt).toLocaleDateString()}
                 image={item.urlToImage ?? undefined}

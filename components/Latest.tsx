@@ -1,26 +1,21 @@
-"use client"
-import { useGetAllHeadline } from "@/app/services/headline/useHeadlineService";
-import { LatestNewsCard } from "./LatestNewsCard";
-import Link from "next/link";
+'use client';
+import { useGetAllHeadline } from '@/app/services/headline/useHeadlineService';
+import { LatestNewsCard } from './LatestNewsCard';
+import Link from 'next/link';
 
 export default function Latest() {
   const { data: latestNews, isPending, isError } = useGetAllHeadline();
-  if (isPending){
-    return(
-      <p>Loading...</p>
-    )
+  if (isPending) {
+    return <p>Loading...</p>;
   }
-  if (isError){
-    return(
-      <p>Error......</p>
-    )
+  if (isError) {
+    return <p>Error......</p>;
   }
   return (
     <section className="w-100 ">
       <h1 className="text-3xl font-bold mb-4 text-left">Latest News</h1>
 
       <div className="space-y-4">
-       
         {latestNews?.articles.map((item) => (
           <Link
             key={item.url}
@@ -28,8 +23,8 @@ export default function Latest() {
           >
             <LatestNewsCard
               title={item.title}
-              description={item.description ?? "No description available"}
-              category={item.source.name}  
+              description={item.description ?? 'No description available'}
+              category={item.source.name}
               date={new Date(item.publishedAt).toLocaleDateString()}
               item={item}
             />

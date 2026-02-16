@@ -1,9 +1,9 @@
-"use client";
-import { useLibrary } from "@/app/context/LibaryContext";
-import Image from "next/image";
-import { Card, CardContent } from "./ui/card";
-import { Button } from "./ui/button";
-import { Article } from "@/app/type/news";
+'use client';
+import { useLibrary } from '@/app/context/LibaryContext';
+import Image from 'next/image';
+import { Card, CardContent } from './ui/card';
+import { Button } from './ui/button';
+import { Article } from '@/app/type/news';
 
 interface TrendingBlogCardProps {
   title: string;
@@ -22,7 +22,7 @@ export default function LibaryNewsCard({
   date,
   item,
 }: TrendingBlogCardProps) {
-  const {removeFromLibrary} = useLibrary();
+  const { removeFromLibrary } = useLibrary();
   return (
     <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
       {/* Image */}
@@ -33,8 +33,6 @@ export default function LibaryNewsCard({
             alt={title}
             loading="eager"
             fill
-            // height={100}
-            // width={100}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
@@ -58,10 +56,11 @@ export default function LibaryNewsCard({
           <Button
             size="sm"
             className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95"
-            onClick={(e)=>{
-                e.preventDefault()
-                e.stopPropagation()
-                removeFromLibrary(item.url)}}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              removeFromLibrary(item.url);
+            }}
           >
             Remove
           </Button>

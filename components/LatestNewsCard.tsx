@@ -1,9 +1,9 @@
-"use client";
-import { Article } from "@/app/type/news";
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
-import { Button } from "./ui/button";
-import { useLibrary } from "@/app/context/LibaryContext";
-import { useUser } from "@clerk/nextjs";
+'use client';
+import { Article } from '@/app/type/news';
+import { Card, CardDescription, CardTitle } from '@/components/ui/card';
+import { Button } from './ui/button';
+import { useLibrary } from '@/app/context/LibaryContext';
+import { useUser } from '@clerk/nextjs';
 interface LatestNewsCardProps {
   title: string;
   description: string;
@@ -48,11 +48,11 @@ export function LatestNewsCard({
               {isSignedIn ? (
                 <Button
                   size="sm"
-                  variant={saved ? "default" : "secondary"}
+                  variant={saved ? 'default' : 'secondary'}
                   className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95"
                   onClick={(e) => handleClick(e)}
                 >
-                  {saved ? "Saved ✓" : "Read Later"}
+                  {saved ? 'Saved ✓' : 'Read Later'}
                 </Button>
               ) : null}
             </div>

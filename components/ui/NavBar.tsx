@@ -1,25 +1,19 @@
-"use client"
-import Link from "next/link"
-import { Button } from "./button"
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from "@clerk/nextjs"
-import { usePathname } from "next/navigation";
-import { Divide } from "lucide-react";
+'use client';
+import Link from 'next/link';
+import { Button } from './button';
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
+import { usePathname } from 'next/navigation';
+import { Divide } from 'lucide-react';
 export default function NavBar() {
   const navItemLeft = [
-    { label: "Home", href: "/" },
-    { label: "Library", href: "/library" },
-    { label: "About", href: "/about" },
-  ]
-   const pathname = usePathname();
+    { label: 'Home', href: '/' },
+    { label: 'Library', href: '/library' },
+    { label: 'About', href: '/about' },
+  ];
+  const pathname = usePathname();
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-white/70 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        
         <Link href="/" className="text-2xl font-bold tracking-tight">
           <span className="text-indigo-600">Global</span>News
         </Link>
@@ -37,30 +31,32 @@ export default function NavBar() {
           ))}
         </div>
 
-      {
-        pathname!=="/sign-in"?  <div className="flex items-center gap-4">
-          {/* Show Sign In when signed out */}
-          <SignedOut>
-            <SignInButton mode="modal">
-              <Button className="rounded-full px-5 py-2 bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300 shadow-md hover:shadow-lg">
-                Sign In
-              </Button>
-            </SignInButton>
-          </SignedOut>
+        {pathname !== '/sign-in' ? (
+          <div className="flex items-center gap-4">
+            {/* Show Sign In when signed out */}
+            <SignedOut>
+              <SignInButton mode="modal">
+                <Button className="rounded-full px-5 py-2 bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300 shadow-md hover:shadow-lg">
+                  Sign In
+                </Button>
+              </SignInButton>
+            </SignedOut>
 
-          {/* Show User profile when signed in */}
-          <SignedIn>
-            <UserButton
-              appearance={{
-                elements: {
-                  avatarBox: "w-10 h-10",
-                },
-              }}
-            />
-          </SignedIn>
-        </div>:<div></div>
-      }
+            {/* Show User profile when signed in */}
+            <SignedIn>
+              <UserButton
+                appearance={{
+                  elements: {
+                    avatarBox: 'w-10 h-10',
+                  },
+                }}
+              />
+            </SignedIn>
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
     </nav>
-  )
+  );
 }

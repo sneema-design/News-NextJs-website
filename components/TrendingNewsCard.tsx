@@ -1,10 +1,10 @@
-"use client";
-import { useLibrary } from "@/app/context/LibaryContext";
-import Image from "next/image";
-import { Card, CardContent } from "./ui/card";
-import { Button } from "./ui/button";
-import { Article } from "@/app/type/news";
-import { useUser } from "@clerk/nextjs";
+'use client';
+import { useLibrary } from '@/app/context/LibaryContext';
+import Image from 'next/image';
+import { Card, CardContent } from './ui/card';
+import { Button } from './ui/button';
+import { Article } from '@/app/type/news';
+import { useUser } from '@clerk/nextjs';
 interface TrendingBlogCardProps {
   title: string;
   description: string;
@@ -64,11 +64,11 @@ export default function TrendingNewsCard({
             {isSignedIn ? (
               <Button
                 size="sm"
-                variant={saved ? "default" : "secondary"}
+                variant={saved ? 'default' : 'secondary'}
                 className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95"
                 onClick={(e) => handleClick(e)}
               >
-                {saved ? "Saved ✓" : "Read Later"}
+                {saved ? 'Saved ✓' : 'Read Later'}
               </Button>
             ) : null}
           </div>

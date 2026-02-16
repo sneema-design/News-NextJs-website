@@ -1,16 +1,14 @@
-"use client";
+'use client';
 
-import { createContext, useContext, useState, ReactNode } from "react";
-import type { LibraryContextType, Article } from "../type/news";
+import { createContext, useContext, useState, ReactNode } from 'react';
+import type { LibraryContextType, Article } from '../type/news';
 
-const LibraryContext = createContext<LibraryContextType | undefined>(
-  undefined
-);
+const LibraryContext = createContext<LibraryContextType | undefined>(undefined);
 
 export const LibraryProvider = ({ children }: { children: ReactNode }) => {
   const [library, setLibrary] = useState<Article[]>(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("library");
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('library');
       return stored ? JSON.parse(stored) : [];
     }
     return [];
@@ -21,7 +19,7 @@ export const LibraryProvider = ({ children }: { children: ReactNode }) => {
       if (prev.find((item) => item.url === article.url)) return prev;
 
       const updated = [...prev, article];
-      localStorage.setItem("library", JSON.stringify(updated));
+      localStorage.setItem('library', JSON.stringify(updated));
       return updated;
     });
   };
@@ -29,7 +27,7 @@ export const LibraryProvider = ({ children }: { children: ReactNode }) => {
   const removeFromLibrary = (url: string) => {
     setLibrary((prev) => {
       const updated = prev.filter((item) => item.url !== url);
-      localStorage.setItem("library", JSON.stringify(updated));
+      localStorage.setItem('library', JSON.stringify(updated));
       return updated;
     });
   };
@@ -50,7 +48,7 @@ export const LibraryProvider = ({ children }: { children: ReactNode }) => {
 export const useLibrary = () => {
   const context = useContext(LibraryContext);
   if (!context) {
-    throw new Error("useLibrary must be used inside LibraryProvider");
+    throw new Error('useLibrary must be used inside LibraryProvider');
   }
   return context;
 };

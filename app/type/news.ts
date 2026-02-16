@@ -18,10 +18,9 @@ export interface NewsApiResponse {
   articles: Article[];
 }
 
-
 export interface LibraryContextType {
   library: Article[];
   addToLibrary: (article: Article) => void;
   removeFromLibrary: (url: string) => void;
-  isSaved:(url:string)=>boolean;
+  isSaved: (url: string) => boolean;
 }

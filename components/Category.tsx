@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import { Button } from './ui/button';
 
 interface Props {
   selected: string | null;
@@ -7,13 +7,13 @@ interface Props {
 
 export default function Category({ selected, onSelect }: Props) {
   const categories = [
-    "business",
-    "entertainment",
-    "general",
-    "health",
-    "science",
-    "sports",
-    "technology",
+    'business',
+    'entertainment',
+    'general',
+    'health',
+    'science',
+    'sports',
+    'technology',
   ];
 
   return (
@@ -26,10 +26,8 @@ export default function Category({ selected, onSelect }: Props) {
             return (
               <Button
                 key={cat}
-                variant={isActive ? "default" : "outline"}
-                onClick={() =>
-                  onSelect(isActive ? null : cat)
-                }
+                variant={isActive ? 'default' : 'outline'}
+                onClick={() => onSelect(isActive ? null : cat)}
                 className="rounded-full px-5 text-sm font-medium whitespace-nowrap"
               >
                 {cat}

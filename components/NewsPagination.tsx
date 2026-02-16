@@ -5,7 +5,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from '@/components/ui/pagination';
 
 type Props = {
   currentPage: number;
@@ -24,34 +24,29 @@ export function NewsPagnination({
         {/* Previous */}
         <PaginationItem>
           <PaginationPrevious
-            onClick={() =>
-              currentPage > 1 && onPageChange(currentPage - 1)
-            }
+            onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
             className="cursor-pointer"
           />
         </PaginationItem>
 
         {/* Page Numbers */}
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-          (page) => (
-            <PaginationItem key={page}>
-              <PaginationLink
-                isActive={currentPage === page}
-                onClick={() => onPageChange(page)}
-                className="cursor-pointer"
-              >
-                {page}
-              </PaginationLink>
-            </PaginationItem>
-          )
-        )}
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+          <PaginationItem key={page}>
+            <PaginationLink
+              isActive={currentPage === page}
+              onClick={() => onPageChange(page)}
+              className="cursor-pointer"
+            >
+              {page}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
 
         {/* Next */}
         <PaginationItem>
           <PaginationNext
             onClick={() =>
-              currentPage < totalPages &&
-              onPageChange(currentPage + 1)
+              currentPage < totalPages && onPageChange(currentPage + 1)
             }
             className="cursor-pointer"
           />
