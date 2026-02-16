@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Article } from "@/app/type/news";
-
+import { useUser } from "@clerk/nextjs";
 interface TrendingBlogCardProps {
   title: string;
   description: string;
@@ -24,6 +24,7 @@ export default function TrendingNewsCard({
 }: TrendingBlogCardProps) {
   const { addToLibrary, removeFromLibrary, isSaved } = useLibrary();
   const saved=isSaved(item.url)
+  const {isSignedIn}=useUser()
   return (
     <Card className="overflow-hidden group cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-xl">
       {/* Image */}
@@ -56,7 +57,9 @@ export default function TrendingNewsCard({
 
         <div className="flex justify-between">
           <p className="text-xs text-muted-foreground pt-2">{date}</p>
-          <Button
+          <div>
+            {
+              isSignedIn?<Button
             size="sm"
             variant={saved ? "default" : "secondary"}
             className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95"
@@ -73,7 +76,9 @@ export default function TrendingNewsCard({
             }}
           >
             {saved ? "Saved ✓" : "Read Later"}
-          </Button>
+          </Button>:null
+            }
+          </div>
         </div>
       </CardContent>
     </Card>

@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/card"
 import { Button } from "./ui/button"
 import { useLibrary } from "@/app/context/LibaryContext"
+import { useUser } from "@clerk/nextjs"
 interface LatestNewsCardProps {
   title: string
   description: string
@@ -20,6 +21,7 @@ export function LatestNewsCard({  title,
   date,item}:LatestNewsCardProps) {
     const {addToLibrary,removeFromLibrary,isSaved}=useLibrary()
     const saved=isSaved(item.url)
+    const {isSignedIn}= useUser()
   return (
     <Card className="p-4 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
       <div className="flex items-center justify-between gap-6">
@@ -41,7 +43,8 @@ export function LatestNewsCard({  title,
             <p className="text-xs text-gray-500 mt-2">
             {date}• 5 min read
           </p>
-         <Button
+         <div>
+          {isSignedIn?<Button
             size="sm"
             variant={saved ? "default" : "secondary"}
             className="cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95"
@@ -58,7 +61,8 @@ export function LatestNewsCard({  title,
             }}
           >
             {saved ? "Saved ✓" : "Read Later"}
-          </Button>
+          </Button>:null}
+         </div>
         </div>
         </div>
       </div>
